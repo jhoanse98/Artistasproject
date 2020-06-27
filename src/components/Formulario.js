@@ -1,11 +1,46 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Formulario = () => {
+
+    const [busqueda, actualizarBusqueda] = useState({
+        artista: '',
+        cancion: '',
+    });
+
+    const [error, actualizarError] = useState(false);
+
+    const {artista, cancion} = busqueda;
+
+    //funcion a cada input leer su contenido
+
+    const actualizarState = e => {
+        actualizarBusqueda({
+            ...busqueda,
+            [e.target.name] : e.target.value
+        });
+    } 
+
+    const realizarBusqueda = e => {
+        e.preventDefault();
+
+        //validar campos
+        if(artista.trim() === "" || cancion.trim() === ""){
+            actualizarError(true)
+            return;
+        }
+
+        actualizarError(false)
+
+
+    }
+
+
     return (
         <div className="bg-info">
             <div className="container">
                 <div className="row">
                     <form
+                        onSubmit={realizarBusqueda}
                         className="col card text-white bg-transparent mb-5 pt-5 pb-2"
                     >
                         <fieldset>
@@ -20,6 +55,8 @@ const Formulario = () => {
                                             className="form-control"
                                             name="artista"
                                             placeholder="Nombre del artista"
+                                            value={artista}
+                                            onChange={actualizarState}
                                         />
                                     </div>
                                 </div>
@@ -32,6 +69,8 @@ const Formulario = () => {
                                             className="form-control"
                                             name="cancion"
                                             placeholder="Cancion del artista"
+                                            value={cancion}
+                                            onChange={actualizarState}
                                         />
                                     </div>
                                 </div>
