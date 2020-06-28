@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Infocantante = ({infoartista}) => {
 
@@ -20,5 +21,9 @@ const Infocantante = ({infoartista}) => {
 
       );
 }
+
+Infocantante.propTypes = {
+    infoartista: PropTypes.object.isRequired,    
+};
  
 export default Infocantante;

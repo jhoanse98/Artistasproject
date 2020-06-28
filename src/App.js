@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     if(Object.keys(consulta).length === 0) return;
 
-    
+
     
     const consultarApi=  async () => {
       const {artista, cancion} = consulta;
@@ -67,7 +67,7 @@ function App() {
         :
         <div className="row">
           <div className="col-md-6">
-            <Infocantante infoartista={infoartista} />
+            <Infocantante infoartista={infoartista} />            
           </div>
           <div className="col-md-6">
             <Letra letra={letra} />
